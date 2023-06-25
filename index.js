@@ -4,7 +4,7 @@ const LinkedList = () => {
     tailNode: null,
     append: (value) => {
       const node = Node(value);
-      if (this.headNode === null) {
+      if (!this.headNode) {
         this.headNode = node;
         this.tailNode = node;
       } else {
@@ -14,7 +14,7 @@ const LinkedList = () => {
     },
     prepend: (value) => {
       const node = Node(value);
-      if (this.headNode === null) {
+      if (!this.headNode) {
         this.headNode = node;
         this.tailNode = node;
       } else {
@@ -25,7 +25,7 @@ const LinkedList = () => {
     size: () => {
       let count = 0;
       let currNode = this.headNode;
-      while (currNode !== null) {
+      while (currNode) {
         count++;
         currNode = currNode.nextNode;
       }
@@ -61,11 +61,11 @@ const LinkedList = () => {
       return this.tailNode;
     },
     contains: (value) => {
-      if (this.headNode === null) {
+      if (!this.headNode) {
         return false;
       }
       let currNode = this.headNode;
-      while (currNode !== null) {
+      while (currNode) {
         if (currNode.value === value) {
           return true;
         }
@@ -74,12 +74,12 @@ const LinkedList = () => {
       return false;
     },
     find: (value) => {
-      if (this.headNode === null) {
+      if (!this.headNode) {
         return null;
       }
       let currNode = this.headNode;
       let count = 0
-      while (currNode !== null) {
+      while (currNode) {
         if (currNode.value === value) {
           return count;
         }
@@ -90,8 +90,9 @@ const LinkedList = () => {
     toString: () => {
       let currNode = this.headNode;
       let repr = "";
-      while (currNode !== null) {
+      while (currNode) {
         repr += `( ${currNode.value} ) -> `;
+        currNode = currNode.nextNode;
       }
       repr += "null";
       return repr;
